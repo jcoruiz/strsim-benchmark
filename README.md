@@ -102,7 +102,7 @@ Date: 2026-03-16 | Go 1.22.2 | Linux/amd64 | 32 cores
 
 ### strsim ASCIIOnly Fast Path
 
-strsim supports an `ASCIIOnly` mode that skips rune conversion for pure-ASCII input. This trades Unicode correctness for speed — use only when you know your input is ASCII.
+strsim supports an `ASCIIOnly` mode that skips rune conversion for pure-ASCII input. This trades Unicode correctness for speed: use it only when you know your input is ASCII.
 
 | Algorithm | Rune (ns/op) | ASCII (ns/op) | Speedup |
 |---|---|---|---|
@@ -121,17 +121,17 @@ Input: 43-char ASCII strings. With `ASCIIOnly`, strsim batch matching (93k ns) i
 | "Washington" | 30 | **17** |
 | "Schwarzenegger" | 38 | **17** |
 
-smetrics Soundex is faster but has bugs: **panics on empty input** and produces **incorrect results for Ashcraft** (A226 instead of A261 — doesn't handle H/W transparency correctly per the American Soundex specification).
+smetrics Soundex is faster but has bugs: **panics on empty input** and produces **incorrect results for Ashcraft** (A226 instead of A261: it doesn't treat H and W as transparent, as the American Soundex specification requires).
 
 ## Key Findings
 
-1. **smetrics operates on bytes, not runes** — produces incorrect Levenshtein distance for non-ASCII input (9 instead of 3 for Japanese strings)
-2. **go-edlib and strutil return NaN** for `Similarity("", "")` — division by zero in normalization
+1. **smetrics operates on bytes, not runes**, so it produces incorrect Levenshtein distance for non-ASCII input (9 instead of 3 for Japanese strings)
+2. **go-edlib and strutil return NaN** for `Similarity("", "")`, a division by zero in normalization
 3. **smetrics Soundex panics** on empty input and gives wrong results for "Ashcraft" (H/W transparency bug)
-4. **strsim Jaro-Winkler is fastest** for medium and long strings — the typical real-world case
+4. **strsim Jaro-Winkler is fastest** for medium and long strings, the typical real-world case
 5. **strsim Hamming is fastest** across all scenarios
 6. **strsim is the only library** combining edit distance + token-based + phonetic (15 algorithms)
-7. **strsim ASCIIOnly batch matching is the fastest** at 93k ns/op — 1.7x faster than smetrics (160k ns)
+7. **strsim ASCIIOnly batch matching is the fastest** at 93k ns/op, 1.7x faster than smetrics (160k ns)
 8. **smetrics wins Levenshtein** on ASCII strings due to a tighter inner loop, but with broken Unicode
 
 ## Methodology
