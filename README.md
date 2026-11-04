@@ -17,7 +17,7 @@ Reproducible benchmark comparing Go string similarity libraries.
 go run .
 ```
 
-Requires Go 1.22+. The benchmark takes about 30 seconds.
+Requires Go 1.22+. The benchmark takes about two minutes.
 
 ## Results
 
