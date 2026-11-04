@@ -433,8 +433,8 @@ func benchmarkASCIIFastPath() {
 	fmt.Println("|---|---|---|---|")
 
 	type benchCase struct {
-		name string
-		rune func() testing.BenchmarkResult
+		name  string
+		rune  func() testing.BenchmarkResult
 		ascii func() testing.BenchmarkResult
 	}
 
