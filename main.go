@@ -56,7 +56,7 @@ type correctnessResult struct {
 }
 
 func checkLevenshteinCorrectness() {
-	fmt.Println("\n## Levenshtein Distance — Correctness")
+	fmt.Println("\n## Levenshtein Distance: Correctness")
 	fmt.Println()
 	fmt.Println("| Scenario | Input | Expected | strsim | go-edlib | strutil | smetrics |")
 	fmt.Println("|---|---|---|---|---|---|---|")
@@ -85,14 +85,14 @@ func checkLevenshteinCorrectness() {
 }
 
 func checkSimilarityCorrectness() {
-	fmt.Println("\n## Normalized Similarity — Correctness")
+	fmt.Println("\n## Normalized Similarity: Correctness")
 	fmt.Println()
 	fmt.Println("Tests whether each library returns correct values for `Similarity(\"\", \"\")` (should be 1.0) and `Similarity(\"\", \"hello\")` (should be 0.0).")
 	fmt.Println()
 	fmt.Println("| Test | Expected | strsim | go-edlib | strutil | smetrics |")
 	fmt.Println("|---|---|---|---|---|---|")
 
-	// Empty vs Empty — should be 1.0
+	// Empty vs empty: should be 1.0
 	{
 		a, b := "", ""
 		fmt.Printf("| Levenshtein(\"\", \"\") | 1.0 |")
@@ -103,7 +103,7 @@ func checkSimilarityCorrectness() {
 		fmt.Println()
 	}
 
-	// Empty vs "hello" — should be 0.0
+	// Empty vs "hello": should be 0.0
 	{
 		a, b := "", "hello"
 		fmt.Printf("| Levenshtein(\"\", \"hello\") | 0.0 |")
@@ -138,7 +138,7 @@ func checkSimilarityCorrectness() {
 }
 
 func checkSoundexCorrectness() {
-	fmt.Println("\n## Soundex — Correctness")
+	fmt.Println("\n## Soundex: Correctness")
 	fmt.Println()
 	fmt.Println("| Input | Expected | strsim | smetrics |")
 	fmt.Println("|---|---|---|---|")
@@ -167,7 +167,7 @@ func checkSoundexCorrectness() {
 }
 
 func checkUnicodeCorrectness() {
-	fmt.Println("\n## Unicode Handling — Correctness")
+	fmt.Println("\n## Unicode Handling: Correctness")
 	fmt.Println()
 	fmt.Println("Tests with Japanese strings `\"日本語\"` vs `\"日本語テスト\"`. Correct Levenshtein distance is 3 (3 rune insertions).")
 	fmt.Println()
@@ -192,7 +192,7 @@ func checkUnicodeCorrectness() {
 // ---------- Performance ----------
 
 func benchmarkLevenshtein() {
-	fmt.Println("\n## Levenshtein Distance — Performance")
+	fmt.Println("\n## Levenshtein Distance: Performance")
 	fmt.Println()
 	fmt.Println("| Scenario | strsim | go-edlib | strutil | smetrics |")
 	fmt.Println("|---|---|---|---|---|")
@@ -238,7 +238,7 @@ func benchmarkLevenshtein() {
 }
 
 func benchmarkJaroWinkler() {
-	fmt.Println("\n## Jaro-Winkler Similarity — Performance")
+	fmt.Println("\n## Jaro-Winkler Similarity: Performance")
 	fmt.Println()
 	fmt.Println("| Scenario | strsim | go-edlib | strutil | smetrics |")
 	fmt.Println("|---|---|---|---|---|")
@@ -284,7 +284,7 @@ func benchmarkJaroWinkler() {
 }
 
 func benchmarkHamming() {
-	fmt.Println("\n## Hamming Distance — Performance")
+	fmt.Println("\n## Hamming Distance: Performance")
 	fmt.Println()
 	fmt.Println("| Scenario | strsim | go-edlib | strutil |")
 	fmt.Println("|---|---|---|---|")
@@ -325,7 +325,7 @@ func benchmarkHamming() {
 }
 
 func benchmarkSoundex() {
-	fmt.Println("\n## Soundex — Performance")
+	fmt.Println("\n## Soundex: Performance")
 	fmt.Println()
 	fmt.Println("| Input | strsim | smetrics |")
 	fmt.Println("|---|---|---|")
@@ -354,7 +354,7 @@ func benchmarkSoundex() {
 }
 
 func benchmarkBatch() {
-	fmt.Println("\n## Batch: Find Best Match (1000 candidates) — Performance")
+	fmt.Println("\n## Batch: Find Best Match (1000 candidates): Performance")
 	fmt.Println()
 	fmt.Println("strsim provides built-in `FindBestMatch`. Other libraries require manual iteration.")
 	fmt.Println()
@@ -425,7 +425,7 @@ func benchmarkBatch() {
 }
 
 func benchmarkASCIIFastPath() {
-	fmt.Println("\n## strsim ASCIIOnly Fast Path — Rune vs ASCII")
+	fmt.Println("\n## strsim ASCIIOnly Fast Path: Rune vs ASCII")
 	fmt.Println()
 	fmt.Println("strsim supports an `ASCIIOnly` mode that skips rune conversion for pure-ASCII input.")
 	fmt.Println()
@@ -753,10 +753,10 @@ func main() {
 	fmt.Println("\n---")
 	fmt.Println("\n# Key Findings")
 	fmt.Println()
-	fmt.Println("1. **smetrics operates on bytes, not runes** — Levenshtein distance for Japanese strings is incorrect (counts byte differences instead of character differences)")
-	fmt.Println("2. **go-edlib returns NaN** for `StringsSimilarity(\"\", \"\", Levenshtein)` — division by zero in normalization")
-	fmt.Println("3. **strutil returns NaN** for `Similarity(\"\", \"\", Levenshtein)` — same division by zero issue")
-	fmt.Println("4. **smetrics Soundex panics** on empty input — index out of range")
+	fmt.Println("1. **smetrics operates on bytes, not runes**: Levenshtein distance for Japanese strings is incorrect (counts byte differences instead of character differences)")
+	fmt.Println("2. **go-edlib returns NaN** for `StringsSimilarity(\"\", \"\", Levenshtein)`, a division by zero in normalization")
+	fmt.Println("3. **strutil returns NaN** for `Similarity(\"\", \"\", Levenshtein)`, the same division by zero")
+	fmt.Println("4. **smetrics Soundex panics** on empty input (index out of range)")
 	fmt.Println("5. **strsim is the only library** that combines edit distance + token-based + phonetic algorithms in a single package")
 	fmt.Println("6. **strsim provides batch operations** (`FindBestMatch`, `FindTopN`, `FindAboveThreshold`) out of the box")
 
