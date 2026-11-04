@@ -5,8 +5,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/hbollon/go-edlib v1.7.0 h1:Jt3AtZ+AdgtJhzkrCFvkbdbNL3KCqZlGioLnUfwsxeU=
 github.com/hbollon/go-edlib v1.7.0/go.mod h1:wnt6o6EIVEzUfgbUZY7BerzQ2uvzp354qmS2xaLkrhM=
-github.com/jcoruiz/strsim v0.1.0 h1:pGb2uUgyptzOnijxIp/8DcP7TxDAsr8K2ta2rNzyg+Y=
-github.com/jcoruiz/strsim v0.1.0/go.mod h1:GN//yjhSBOpbXccj3V+zW4Cna5KAUeLsn+lCs5agsoo=
+github.com/jcoruiz/strsim v0.2.1 h1:+CZGmeCYrtVyBVOfUbJ0zVbzSjbtxzVUKJVMrGKFfBM=
+github.com/jcoruiz/strsim v0.2.1/go.mod h1:GN//yjhSBOpbXccj3V+zW4Cna5KAUeLsn+lCs5agsoo=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
